@@ -70,6 +70,11 @@ object DecodeInfo{
     def initial = LOAD
   }
 
+  object Mask extends SpinalEnum(binarySequential){
+    val B,H,W = newElement()  //bytes / half Word / word
+    def initial = B
+  }
+
   object CSR extends SpinalEnum(binarySequential){
     //Todo
   }
@@ -111,6 +116,7 @@ object DecodeInfo{
     val fencei = Bool()
     val useMemory = Bool()
     val memoryOption = MemoryOp()  //load or store
+    val mask = Mask()
     //val csr = CSR()
   }
 
@@ -146,6 +152,7 @@ object DecodeInfo{
       ctrl.op0 := OP0.initial
       ctrl.op1 := OP1.initial
       ctrl.alu := ALU.initial
+      ctrl.mask.assignFromBits(instruction(13 downto 12))  //very simple mask decide memory data size
       ctrl.useSrc0 := False
       ctrl.useSrc1 := False
       ctrl.fencei := False

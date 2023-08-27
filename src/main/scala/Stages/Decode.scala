@@ -24,7 +24,7 @@ case class IMM(instruction:Bits) extends Area{
 }
 
 
-case class CoreDecodeOutput()(implicit p:RiscvCoreConfig) extends Bundle {
+case class DecodeOutput()(implicit p:RiscvCoreConfig) extends Bundle {
   val pc = UInt(p.pcWidth bits)
   val instrcution = Bits(32 bits)
   val ctrl = InstructionCtrl()
@@ -41,7 +41,7 @@ class Decode(implicit p:RiscvCoreConfig) extends PrefixComponent {
     //input IR
     val inInst = slave Stream FetchOutput()  //should pipeline while fetch the data
     val regfileIO = slave (RegfileIO()) //send the Regfile IO to the regfile
-    val decodeOutput = master Stream CoreDecodeOutput()
+    val decodeOutput = master Stream DecodeOutput()
     val pcLoad = master Flow UInt(p.pcWidth bits)
     val Externalflush = out Bool()
     val Internalflush = in Bool()

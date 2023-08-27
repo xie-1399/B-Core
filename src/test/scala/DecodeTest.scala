@@ -1,5 +1,6 @@
 
 //test the decode unit
+import BCore.DecodeInfo.OP1
 import BCore.RiscvCoreConfig
 import Stages._
 import CoreSim._
@@ -78,23 +79,30 @@ class DecodeSimTest extends AnyFunSuite{
           dut.clockDomain.waitSampling()
         }
 
-        def SetInstruction(instruction:BigInt) = {
-          dut.regfile.io.write #= false
-          dut.decode.io.inInst.valid #= true
-          dut.decode.io.inInst.instruction #= instruction
-          dut.decode.io.Internalflush #= false
-          dut.clockDomain.waitSampling()
+        def SetInstruction(instruction:BigInt,aluOp0:Int,aluOp1:Int,iter : Int = 10,assertion:() => Unit = null,
+                           withMemory:Boolean = false) = {
+          for(idx <- 0 until iter){
+            dut.regfile.io.write #= false
+            dut.decode.io.inInst.valid #= true
+            dut.decode.io.inInst.instruction #= instruction
+            dut.decode.io.Internalflush #= false
+            dut.clockDomain.waitSampling()
+            if (dut.decode.io.inInst.valid.toBoolean && dut.decode.io.inInst.ready.toBoolean) {
+              assert(dut.decode.io.decodeOutput.alu_op0.toBigInt == aluOp0)
+              assert(dut.decode.io.decodeOutput.alu_op1.toBigInt == aluOp1)
+              if (withMemory) assert(dut.decode.io.decodeOutput.ctrl.useMemory.toBoolean)
+            }
+          }
         }
-
         for (idx <- 0 until 32) {
           write(idx, idx)
         }
         dut.clockDomain.waitSampling(5)
         StreamReadyRandomizer(dut.decode.io.decodeOutput,dut.clockDomain)
         //one very simple instruction (add x1,x2,x3)
-        for(idx <- 0 until 100){
-          SetInstruction(0x00408093)  //addi x1,x1,4
-        }
+        SetInstruction(0x00408093,1,4)  //addi x1,x1,4
+        SetInstruction(0x00720133,4,7)  //add x2,x4,x7
+        SetInstruction(0x0823a023,7,2, withMemory = true)  // sw x2,0x80,x7（sw rs2 -> M(rs1 + offset)）
     }
   }
 
