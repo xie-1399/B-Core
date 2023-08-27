@@ -1,4 +1,4 @@
-package CPU.TinyCore.Extension
+package Extension
 
 //define the abstract core extension
 

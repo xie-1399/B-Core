@@ -1,6 +1,6 @@
-package CPU.TinyCore.Stages
+package Stages
 
-import lib.Sim.SpinalSim.PrefixComponent
+import DefineSim.SpinalSim.PrefixComponent
 import spinal.core._
 import spinal.lib._
 

@@ -1,9 +1,8 @@
-package TinyCore
 
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim
-import CPU.TinyCore.Stages._
+import DefineSim.SpinalSim
+import Stages._
 
 import scala.util.Random
 

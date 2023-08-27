@@ -1,11 +1,9 @@
-package TinyCore
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim
-import CPU.TinyCore._
-import CPU.TinyCore.DecodeInfo._
+import BCore.DecodeInfo._
 import scala.util.Random
-
+import BCore.Alu
+import DefineSim.SpinalSim
 
 class AluTest extends AnyFunSuite{
   var compiled:SimCompiled[Alu] = null

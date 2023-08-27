@@ -1,16 +1,15 @@
-package TinyCore
 
 //monitor the instruction cache about the flush/read/fill
 
-import CPU.TinyCore.Memory._
-import CPU.TinyCore.Misc.Config.instructionCacheConfig
-import CPU.TinyCore.RiscvCoreConfig
-import CPU.TinyCore.Sim._
+import Memory._
+import BCore.Misc.Config.instructionCacheConfig
+import BCore.RiscvCoreConfig
+import CoreSim._
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim
-import lib.Sim._
-import lib.Sim.StramFlowSim._
+import DefineSim.SpinalSim
+import DefineSim._
+import DefineSim.StramFlowSim._
 
 
 class InstructionCacheTest extends AnyFunSuite{

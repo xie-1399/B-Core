@@ -1,10 +1,10 @@
-package CPU.TinyCore.Stages
+package Stages
 
 //riscv 32 regfile
 import spinal.core._
 import spinal.lib._
-import CPU.TinyCore.Misc._
-import lib.Sim.SpinalSim.PrefixComponent
+import BCore.Misc._
+import DefineSim.SpinalSim.PrefixComponent
 
 trait RegfileReadKind
 object async extends RegfileReadKind

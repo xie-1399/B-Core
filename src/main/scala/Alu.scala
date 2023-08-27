@@ -1,6 +1,6 @@
-package CPU.TinyCore
-
 //Alu Unit implement ADD SUB AND OR XOR SLT(rs1 < rs2 ? 1:0) SLTU
+
+package BCore
 
 import spinal.core._
 import spinal.lib._

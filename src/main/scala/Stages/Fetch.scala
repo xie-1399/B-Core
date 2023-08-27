@@ -1,10 +1,10 @@
-package CPU.TinyCore.Stages
+package Stages
 
 import spinal.core._
 import spinal.lib._
-import CPU.TinyCore._
-import CPU.TinyCore.Misc.Config._
-import lib.Sim.SpinalSim.PrefixComponent
+import BCore._
+import BCore.Misc.Config._
+import DefineSim.SpinalSim.PrefixComponent
 case class FetchOutput()(implicit p:RiscvCoreConfig) extends Bundle{
   //fetch output bundle
   val pc = UInt(p.pcWidth bits)

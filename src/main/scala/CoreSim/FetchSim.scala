@@ -1,8 +1,8 @@
-package CPU.TinyCore.Sim
+package CoreSim
 
-import CPU.TinyCore.RiscvCoreConfig
-import CPU.TinyCore.Stages.{Control, Fetch, InstructionBus}
-import lib.Sim.SpinalSim.PrefixComponent
+import BCore.RiscvCoreConfig
+import Stages.{Control, Fetch, InstructionBus}
+import DefineSim.SpinalSim.PrefixComponent
 import spinal.core._
 import spinal.lib._
 

@@ -1,14 +1,14 @@
-package TinyCore
+
 
 //test about the InstructionBus (no branch prediction)
-import CPU.TinyCore.RiscvCoreConfig
-import CPU.TinyCore.Stages._
-import CPU.TinyCore.Sim._
+import BCore.RiscvCoreConfig
+import Stages._
+import CoreSim._
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim
-import lib.Sim._
-import lib.Sim.StramFlowSim._
+import DefineSim.SpinalSim
+import DefineSim._
+import DefineSim.StramFlowSim._
 
 import scala.util.Random
 class InstructionBusTest extends AnyFunSuite{

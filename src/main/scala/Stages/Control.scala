@@ -1,4 +1,4 @@
-package CPU.TinyCore.Stages
+package Stages
 import spinal.core._
 import spinal.lib._
 //the component control the pipeline flush signal and other signals

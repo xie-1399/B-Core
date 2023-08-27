@@ -1,10 +1,10 @@
-package CPU.TinyCore.Stages
+package Stages
 
 import spinal.core._
 import spinal.lib._
 import spinal.lib.bus.amba4.axi._
-import CPU.TinyCore._
-import lib.Sim.SpinalSim.PrefixComponent
+import BCore._
+import DefineSim.SpinalSim.PrefixComponent
 
 import scala.collection.mutable.ArrayBuffer
 //some bundles about the Instruction Bus

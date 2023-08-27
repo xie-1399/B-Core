@@ -1,14 +1,13 @@
-package TinyCore
 
 //test the decode unit
-
-import CPU.TinyCore.RiscvCoreConfig
-import CPU.TinyCore.Stages._
-import CPU.TinyCore.Sim._
+import BCore.RiscvCoreConfig
+import Stages._
+import CoreSim._
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim._
-import lib.Sim._
+import DefineSim.SpinalSim._
+import DefineSim.SpinalSim
+import DefineSim.SIMCFG
 import spinal.lib.sim.StreamReadyRandomizer
 
 

@@ -1,14 +1,15 @@
-package TinyCore
+
 
 //test the fetch using pc
-import CPU.TinyCore.RiscvCoreConfig
-import CPU.TinyCore.Sim._
+import BCore.RiscvCoreConfig
 import spinal.core.sim._
 import org.scalatest.funsuite.AnyFunSuite
-import lib.Sim.SpinalSim._
-import lib.Sim._
-import lib.Sim.StramFlowSim._
-import CPU.TinyCore.Stages._
+import DefineSim.SpinalSim
+import DefineSim.SpinalSim._
+import DefineSim._
+import CoreSim._
+import DefineSim.StramFlowSim._
+import Stages._
 import spinal.core.Component.push
 import spinal.lib.sim.StreamReadyRandomizer
 

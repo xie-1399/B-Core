@@ -1,4 +1,4 @@
-package CPU.TinyCore.Stages
+package Stages
 
 class WriteBack {
 

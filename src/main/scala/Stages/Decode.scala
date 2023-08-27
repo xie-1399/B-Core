@@ -1,10 +1,10 @@
-package CPU.TinyCore.Stages
+package Stages
 
-import CPU.TinyCore.RiscvCoreConfig
+import BCore.RiscvCoreConfig
 import spinal.core._
 import spinal.lib._
-import CPU.TinyCore.DecodeInfo._
-import lib.Sim.SpinalSim.PrefixComponent
+import BCore.DecodeInfo._
+import DefineSim.SpinalSim.PrefixComponent
 
 //Decode for the Fetch Instruction
 

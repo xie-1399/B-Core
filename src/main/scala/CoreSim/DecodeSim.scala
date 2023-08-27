@@ -1,10 +1,11 @@
-package CPU.TinyCore.Sim
-import lib.Sim.SpinalSim.PrefixComponent
+package CoreSim
+
+import DefineSim.SpinalSim.PrefixComponent
 import spinal.core._
 import spinal.lib._
-import CPU.TinyCore.Stages._
-import CPU.TinyCore.DecodeInfo._
-import CPU.TinyCore.RiscvCoreConfig
+import Stages._
+import BCore.DecodeInfo._
+import BCore.RiscvCoreConfig
 //some component about the riscv decode
 
 class instructionctrl extends PrefixComponent{

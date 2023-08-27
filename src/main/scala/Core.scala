@@ -1,5 +1,7 @@
-package CPU.TinyCore
-import CPU.TinyCore.Stages._
+
+package BCore
+
+import Stages._
 import spinal.core._
 import spinal.lib._
 import Extension._

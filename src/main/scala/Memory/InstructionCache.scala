@@ -1,10 +1,11 @@
-package CPU.TinyCore.Memory
+package Memory
 
 //implement the instruction Cache
-import lib.Sim.SpinalSim.PrefixComponent
 import spinal.core._
 import spinal.lib._
 import spinal.lib.bus.amba4.axi._
+import DefineSim.SpinalSim.PrefixComponent
+
 
 //Todo add test(update it to mul ways)
 

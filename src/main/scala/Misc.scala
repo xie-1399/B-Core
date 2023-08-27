@@ -1,6 +1,8 @@
-package CPU.TinyCore
+
+package BCore
+
 import spinal.core._
-import CPU.TinyCore.Memory._
+import Memory._
 
 object Misc {
   object Global{

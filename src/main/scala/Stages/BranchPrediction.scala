@@ -1,6 +1,6 @@
-package CPU.TinyCore.Stages
+package Stages
 
-import CPU.TinyCore.RiscvCoreConfig
+import BCore.RiscvCoreConfig
 import spinal.core._
 import spinal.lib._
 
