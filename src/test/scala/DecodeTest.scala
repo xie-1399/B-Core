@@ -54,7 +54,6 @@ class DecodeTest extends AnyFunSuite{
 }
 
 // another way to use the sim situation
-
 class DecodeSimTest extends AnyFunSuite{
   test("only sim the decode"){
     SIMCFG(gtkFirst = true).compile{
@@ -107,6 +106,7 @@ class DecodeSimTest extends AnyFunSuite{
   }
 
 
+  //using the utils instead
   test("sim the decode with fetch") {
     SIMCFG(gtkFirst = true).compile {
       val config = RiscvCoreConfig(addressWidth = 6,pcWidth = 6,startAddress = 0x00000000)
