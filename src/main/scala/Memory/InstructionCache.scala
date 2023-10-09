@@ -5,9 +5,7 @@ import spinal.core._
 import spinal.lib._
 import spinal.lib.bus.amba4.axi._
 import DefineSim.SpinalSim.PrefixComponent
-
-
-//Todo add test(update it to mul ways)
+import spinal.lib.cpu.riscv.impl.{InstructionCache,DataCache}
 
 // I Cache Config and axi4 bus config
 case class InstructionCacheConfig(cacheSize: Int,

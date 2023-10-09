@@ -12,7 +12,7 @@ class AluTest extends AnyFunSuite {
     compiled = SpinalSim().compile(new Alu)
   }
 
-  test("testbench") {
+  test("test bench") {
     compiled.doSim(seed = 42) {
       dut =>
         dut.clockDomain.forkStimulus(10)
