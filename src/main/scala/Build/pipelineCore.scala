@@ -8,7 +8,6 @@ import spinal.lib.pipeline._
 
 /*
   * use the pipeline lib to create five stages core
-  * Todo fix the fetch cycles if you want to pass pc and inst to the decode
 
 */
 
@@ -50,8 +49,6 @@ class pipelineCore(p:coreParameters) extends PrefixComponent{
     val haltCpu = in Bool()
   }
 
-
-
   val pipeline = new Pipeline {
     val fetch = new Stage().setName("Fetch")
     val decode = new Stage().setName("Decode")
@@ -88,6 +85,8 @@ class pipelineCore(p:coreParameters) extends PrefixComponent{
       fetchRequest.fetchCmd.valid := reset
       fetchRequest.fetchCmd.io := False
       fetchRequest.fetchCmd.pc := pc
+      fetchRequest.fetchCmd.ready := fetchRequest.fetchCmd.io && fetchRequest.fetchCmd.valid
+
       when(fetchRequest.fetchCmd.pc(31 downto 28) === 0x1){
         fetchRequest.fetchCmd.io := True
       }
@@ -95,15 +94,16 @@ class pipelineCore(p:coreParameters) extends PrefixComponent{
       val itcm = new ITCM(p)
       itcm.io.ioRequest := fetchRequest.fetchCmd.io
       itcm.io.addr := fetchRequest.fetchCmd.pc.resized
+      itcm.io.enable := fetchRequest.fetchCmd.valid
       fetchRequest.fetchRsp.valid := itcm.io.inst.valid
       fetchRequest.fetchRsp.instruction := itcm.io.inst.payload
       fetchRequest.fetchRsp.pc := RegNext(fetchRequest.fetchCmd.pc)
 
-      when(fetchRequest.fetchRsp.valid) {
+      when(fetchRequest.fetchCmd.ready) {
         inc := True
       }
       val fetchOut = Stream(FetchOut(p))
-      fetchOut.valid := fetchRequest.fetchRsp.fire && reset && !halt
+      fetchOut.valid := fetchRequest.fetchRsp.fire && reset
       fetchOut.inst := fetchRequest.fetchRsp.instruction
       fetchOut.pc := fetchRequest.fetchRsp.pc
 
@@ -118,9 +118,11 @@ class pipelineCore(p:coreParameters) extends PrefixComponent{
       /* get the instruction and decode it using common module */
       import decode._
       val DecodeIn = Stream(FetchOut(p))
+      decode.haltWhen(halt)
       onFetch.fetchOut >-> DecodeIn
       DecodeIn.ready := True
-      decode.haltWhen(halt)
+
+
     }
   }
 
